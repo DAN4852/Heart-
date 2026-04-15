@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Heart Rotate</title>
+
+<style>
+  body {
+    margin: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  #box {
+    color: pink;
+    font-family: monospace;
+    white-space: pre;
+    font-size: 10px;
+    line-height: 10px;
+
+    animation: spin 6s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+</style>
+</head>
+
+<body>
+
+<div id="box"></div>
+
+<script>
+const text = "แดน💗หมวย";
+let result = "";
+
+for (let y = 1.5; y > -1.5; y -= 0.08) {
+  let line = "";
+  for (let x = -1.5; x < 1.5; x += 0.04) {
+
+    let heart =
+      Math.pow(x*x + y*y - 1, 3) -
+      x*x * y*y*y;
+
+    if (heart <= 0) {
+      line += text;
+    } else {
+      line += " ";
+    }
+  }
+  result += line + "\n";
+}
+
+document.getElementById("box").innerText = result;
+</script>
+
+</body>
+</html>
